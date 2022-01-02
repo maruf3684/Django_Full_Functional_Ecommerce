@@ -1,0 +1,32 @@
+
+env\Scripts\activate
+MARUF3684@GMAIL.COM
+1234
+maruf15-1927@diu.edu.bd
+12345678
+python manage.py runserver
+
+deactivate
+
+https://dialogflow.cloud.google.com/#/agent/textbot-ynr9/training
+
+packges:
+django-ckeditor
+pillow
+requests
+channel
+sslcommerz-python
+
+
+command:
+manage.py collectstatic
+
+
+
+note:
+  --primary: #79aec8
+  --secondary: #417690;
+  --accent: #f5dd5d;
+  --primary-fg: #fff;
+
+

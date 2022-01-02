@@ -1,0 +1,95 @@
+<!-- UPPER PART -->
+{% load static %}
+
+<div style=" position: sticky; top: 0;z-index: 50">
+
+<div class="myrow ">
+
+    <a class="mycol toggle1 "><i class="fa fa-bars faq " id="i1"></i></a>
+    <a class="mycol toggle1 "></a>
+    <a class="mycol toggle1 "></a>
+    <a href="{% url 'store' %}" class="mycol " style="font-size:3rem; font-weight: bolder;">SHOPPING BD</a>
+    <a class="mycol toggle1 "></a>
+    <a class="mycol toggle1 "></a>
+    <a href="{% url 'cart' %}" class="mycol "><i class="fa fa-shopping-cart faq"></i><span class="badge bg-warning rounded-pill"> {{cart_count}}</span></a>
+
+<!--    <a href="" class="mycol">Login</a>-->
+</div>
+
+      <nav class="sidenav">
+             <a class="closebtn"><i class="fa fa-window-close i3 faqq" ></i></a>
+             <hr style="color: white">
+             <hr style="color: white">
+             <ol class="sid" style="  list-style-type: none; font-size: 2rem; font-weight: bold; width: 100%;">
+                 {% for categories in links%}
+                 <li><a  href="{{categories.get_url}}">{{categories.category_name}}</a></li>
+                 {% endfor %}
+             </ol>
+    </nav>
+
+
+</div>
+
+<div class="myrow m-5 myrow2" style="justify-content: space-between ; border-radius: 1rem; ">
+
+    <div class="myrow mycol"  style="justify-content: start ; border-radius: 4rem;">
+
+<!--    drop down-->
+  <div class="dropdown mycol p-3" style="font-size: 1.4rem">
+  <a style="font-size: 1.4rem" class="btn  dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    {% if user.id is None %}
+     <i class="fas fa-user fa-fw"/></i> Account
+      {% else %}
+      <i class="fas fa-user fa-fw"/></i> {{user.first_name}}
+      {% endif %}
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="font-size: 1.4rem">
+    {% if user.id is None %}
+    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+    <li><a class="dropdown-item" href="{% url 'register' %}">Signup</a></li>
+      {% else %}
+      <li><a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a></li>
+    <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+    {% endif %}
+
+  </ul>
+</div>
+<!--    drop down end-->
+
+        <a href="{% url 'store' %}" class="mycol p-3" style="font-weight: normal;">Home</a>
+        {% if user.is_authenticated %}
+        <a href="{{request.user.get_url}}" class="mycol p-3" style="font-weight: normal;">Connect</a>
+           {% endif %}
+
+
+<!--        <a href="" class="mycol p-3 " style="font-weight: normal;">Recommend</a>-->
+    </div>
+
+   <div class="mycol mal " >
+    <div style="margin-right: 5rem;">
+        <form class="d-flex " action="{% url 'search' %}" method="GET" >
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="font-size: 1.5rem; border-radius: .5rem;" name="keyword" >
+            <button class="btn btn-info p-3" type="submit" style="font-size: 1.5rem;border-radius: .5rem;color: white">Search</button>
+          </form>
+
+    </div>
+   </div>
+
+</div>
+
+
+<div class=" mal2 m-4 mx-5" style="background-color: white;">
+    <div >
+        <form class="d-flex" action="{% url 'search' %}" method="GET" >
+            <input class="form-control me-2 faq" type="search" placeholder="Search" aria-label="Search" style="font-size: 2rem" name="keyword" >
+            <button class="btn btn-info p-3" type="submit" ><i class="fa fa-search faq " style="color:white"></i></button>
+          </form>
+
+    </div>
+</div>
+
+
+
+
+
